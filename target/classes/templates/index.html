@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Student Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+		<button class="btn btn-default"><a  th:href="@{'/new'}">+</a></button>
+		 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Signout</button>
+    </form>
+  </div>
+</nav>
+
+<center style="padding-top:20px;">
+<div class="card bg-light mb-3" style="max-width: 50rem; ">
+  <div class="card-header">Spring Boot Crud System -Student Registation
+  </div>
+  <div class="card-body">
+	
+	<div class="col-sm" align = "center">
+                 <div class="panel-body" align = "center" >
+			  <table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      		<th>Student ID</th>
+			            <th>Student Name</th>
+			            <th>Course</th>
+			            <th>Fee</th>
+			            <th>Edit</th>
+			            <th>Delete</th>
+			   	</tr>
+			  </thead>
+			  <tbody>
+			      <tr  th:each="student : ${liststudent }">
+					<td th:text="${student.id}">Student ID</td>
+					<td th:text="${student.studentname}">StudentName</td>
+					<td th:text="${student.course}">Course</td>
+					<td th:text="${student.fee}">Fee</td>				
+					<td>
+						<a th:href="@{'/edit/' + ${student.id}}">Edit</a>
+					</td>							    
+					<td>
+						<a th:href="@{'/delete/' + ${student.id}}">Delete</a>
+					</td>		    
+					</tr> 
+			  </tbody>
+			</table>
+         </div>
+      </div> 
+<div>
+</center>
+
+</body>
+</html>
